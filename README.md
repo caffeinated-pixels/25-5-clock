@@ -1,9 +1,11 @@
 # 25 + 5 clock
 
-My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-25--5-clock) freeCodeCamp project. I setup this version using create-react-app.
+My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-25--5-clock) freeCodeCamp project. Also known as a Pomodoro clock, apparently!
 
 ## To-do
 
-- setup basic components/layouts with simple styling
-- research & test methods counting down in seconds
-- make pretty
+- setup basic components/layout with placeholder styling
+- research & test methods for counting down in seconds
+  - `setTimeout()` 1000ms???
+- find a suitably annoying alarm sound (alarm woman from Last Crusade?)
+- make it pretty
