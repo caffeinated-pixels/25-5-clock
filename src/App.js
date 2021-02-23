@@ -74,11 +74,34 @@ class App extends Component {
     this.setState({ ...initialState })
   }
 
+  // TODO: refactor handleIncrement & handleDecrement into single fn???
   handleIncrement = input => {
     this.setState(prevState => {
+      const newSessionLength = prevState[input] + 1
+      const newTime = newSessionLength * 60
+      let newDisplayTime = this.calcDisplaytime(newTime)
+
       // only increment if <60 and timer stopped
       if (prevState[input] < 60 && !this.state.isTimerRunning) {
-        return { ...prevState, [input]: prevState[input] + 1 }
+        // if currently in work session
+        if (prevState.workTime && input === 'workLength') {
+          return {
+            ...prevState,
+            displayTime: newDisplayTime,
+            workLength: newSessionLength
+          }
+        }
+
+        // if currently in break session
+        else if (!prevState.workTime && input === 'breakLength') {
+          return {
+            ...prevState,
+            displayTime: newDisplayTime,
+            breakLength: newSessionLength
+          }
+        } else {
+          return { ...prevState, [input]: newSessionLength }
+        }
       } else {
         return { ...prevState }
       }
@@ -87,15 +110,40 @@ class App extends Component {
 
   handleDecrement = input => {
     this.setState(prevState => {
-      // only decrement if >1 and timer stopped
+      const newSessionLength = prevState[input] - 1
+      const newTime = newSessionLength * 60
+      let newDisplayTime = this.calcDisplaytime(newTime)
+
+      /* We only want the user to update session times when the timer is stopped.
+      If we are currently in the session being changed, the display needs to update */
+
+      // only increment if >1 and timer stopped
       if (prevState[input] > 1 && !this.state.isTimerRunning) {
-        return { ...prevState, [input]: prevState[input] - 1 }
+        // if currently in work session & changing workLength
+        if (prevState.workTime && input === 'workLength') {
+          return {
+            ...prevState,
+            displayTime: newDisplayTime,
+            workLength: newSessionLength
+          }
+        }
+        // if currently in break session & changing breakLength
+        else if (!prevState.workTime && input === 'breakLength') {
+          return {
+            ...prevState,
+            displayTime: newDisplayTime,
+            breakLength: newSessionLength
+          }
+        } else {
+          return { ...prevState, [input]: newSessionLength }
+        }
       } else {
         return { ...prevState }
       }
     })
   }
 
+  // HELPER FUNCTIONS
   calcDisplaytime = newTime => {
     let newMin = String(Math.floor(newTime / 60)) // get quotient
     let newSecs = String(newTime % 60) // get remainder
@@ -107,6 +155,7 @@ class App extends Component {
     return newMin + ':' + newSecs
   }
 
+  // RENDER TIME
   render() {
     return (
       <main className="main-wrapper">
