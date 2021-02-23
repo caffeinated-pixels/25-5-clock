@@ -55,6 +55,19 @@ class App extends Component {
 
   handleReset = () => {
     console.log('reset clicked')
+    clearInterval(this.state.intervalId) // stop timer if running
+
+    // reset all values in state
+    this.setState({
+      intClock: 1500,
+      min: '25',
+      secs: '00',
+      isTimerRunning: false,
+      intervalId: null,
+      workTime: true,
+      breakLength: 5,
+      workLength: 25
+    })
   }
 
   render() {
