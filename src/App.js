@@ -10,11 +10,19 @@ class App extends Component {
     isTimerRunning: false
   }
 
+  handleStartStop = () => {
+    console.log('Start button clicked')
+  }
+
   render() {
     return (
       <main className="main-wrapper">
         <Header />
-        <Timer min={this.state.min} secs={this.state.secs} />
+        <Timer
+          min={this.state.min}
+          secs={this.state.secs}
+          handleStartStop={this.handleStartStop}
+        />
         <SessionBtns
           breakLength={this.state.breakLength}
           workLength={this.state.workLength}
@@ -35,7 +43,11 @@ const Timer = props => {
         Work it baby!
       </div>
       <div className="timer-wrapper">
-        <button id="start_stop" className="start-stop">
+        <button
+          id="start_stop"
+          className="start-stop"
+          onClick={props.handleStartStop}
+        >
           P
         </button>
         <div id="time-left" className="time-left">
