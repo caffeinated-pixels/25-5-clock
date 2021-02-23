@@ -13,6 +13,7 @@ const initialState = {
 class App extends Component {
   state = { ...initialState } // initialize state values
 
+  // TODO: need to stop timer before switching to new countdown
   handleStartStop = () => {
     if (!this.state.isTimerRunning) {
       console.log('clock start')
