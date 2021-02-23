@@ -86,6 +86,14 @@ class App extends Component {
     })
   }
 
+  handleIncrement = input => {
+    console.log('increment ' + input)
+  }
+
+  handleDecrement = input => {
+    console.log('decrement ' + input)
+  }
+
   render() {
     return (
       <main className="main-wrapper">
@@ -100,6 +108,8 @@ class App extends Component {
         <SessionBtns
           breakLength={this.state.breakLength}
           workLength={this.state.workLength}
+          handleIncrement={this.handleIncrement}
+          handleDecrement={this.handleDecrement}
         />
       </main>
     )
@@ -148,11 +158,19 @@ const SessionBtns = props => {
           Breaktime
         </div>
         <div className="settings-wrapper">
-          <button id="break-increment" className="settings-btn">
+          <button
+            id="break-increment"
+            className="settings-btn"
+            onClick={() => props.handleIncrement('breakLength')}
+          >
             +
           </button>
           <div>{props.breakLength}</div>
-          <button id="break-decrement" className="settings-btn">
+          <button
+            id="break-decrement"
+            className="settings-btn"
+            onClick={() => props.handleDecrement('breakLength')}
+          >
             -
           </button>
         </div>
@@ -164,11 +182,19 @@ const SessionBtns = props => {
           Worktime
         </div>
         <div className="settings-wrapper">
-          <button id="session-increment" className="settings-btn">
+          <button
+            id="session-increment"
+            className="settings-btn"
+            onClick={() => props.handleIncrement('workLength')}
+          >
             +
           </button>
           <div>{props.workLength}</div>
-          <button id="session-decrement" className="settings-btn">
+          <button
+            id="session-decrement"
+            className="settings-btn"
+            onClick={() => props.handleDecrement('workLength')}
+          >
             -
           </button>
         </div>
