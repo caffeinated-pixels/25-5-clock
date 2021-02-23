@@ -4,8 +4,5 @@ My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/l
 
 ## To-do
 
-- setup basic components/layout with placeholder styling
-- research & test methods for counting down in seconds
-  - `setTimeout()` or `setInterval()` 1000ms???
-- find a suitably annoying alarm sound (alarm woman from Last Crusade?)
+- display colour changes based on time left (eg <=60 secs)
 - make it pretty
