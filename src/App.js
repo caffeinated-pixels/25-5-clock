@@ -2,25 +2,31 @@ import React, { Component } from 'react'
 
 class App extends Component {
   state = {
-    intClock: 1500,
-    min: '25',
-    secs: '00',
+    intClock: 10, // the real clock!
+    min: '25', // quotient of intClock / 60
+    secs: '00', // remainder of intClock / 60 (ie intClock % 60)
     isTimerRunning: false,
-    intervalId: null,
+    intervalId: null, // store the setInterval() id so we can stop the timer
+    workTime: true, // are we on the work session?; false = break session
     breakLength: 5,
     workLength: 25
   }
 
   handleStartStop = () => {
-    // console.log('Start button clicked')
     if (!this.state.isTimerRunning) {
       console.log('clock start')
-      // console.log(prevState.intClock - 1)
+
+      // we need to put the intervalId into state so that we can stop later using clearInterval()
       const newIntervalId = setInterval(() => {
         this.setState(prevState => {
           const newTime = prevState.intClock - 1
-          const newMin = String(Math.floor(newTime / 60))
-          const newSecs = String(newTime % 60)
+
+          let newMin = String(Math.floor(newTime / 60)) // get quotient
+          let newSecs = String(newTime % 60) // get remainder
+
+          // need to add zero for single digit numbers
+          if (newMin.length === 1) newMin = '0' + newMin
+          if (newSecs.length === 1) newSecs = '0' + newSecs
 
           return {
             ...prevState,
