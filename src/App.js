@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 const initialState = {
   intClock: 1500, // the real clock! default = 1500 secs
-  min: '25', // quotient of intClock / 60
-  secs: '00', // remainder of intClock / 60 (ie intClock % 60)
+  displayTime: '25:00', // calculated from intClock
   isTimerRunning: false,
   intervalId: null, // store the setInterval() id so we can stop the timer
   workTime: true, // are we on the work session?; false = break session
@@ -51,8 +50,7 @@ class App extends Component {
           return {
             ...prevState,
             intClock: newTime,
-            min: newMin,
-            secs: newSecs,
+            displayTime: newMin + ':' + newSecs,
             isTimerRunning: true,
             intervalId: newIntervalId
           }
@@ -102,8 +100,7 @@ class App extends Component {
       <main className="main-wrapper">
         <Header />
         <Timer
-          min={this.state.min}
-          secs={this.state.secs}
+          displayTime={this.state.displayTime}
           handleStartStop={this.handleStartStop}
           handleReset={this.handleReset}
           workTime={this.state.workTime}
@@ -143,7 +140,7 @@ const Timer = props => {
           P
         </button>
         <div id="time-left" className="time-left">
-          {props.min}:{props.secs}
+          {props.displayTime}
         </div>
         <button id="reset" className="reset" onClick={props.handleReset}>
           R
