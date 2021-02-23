@@ -87,6 +87,7 @@ class App extends Component {
         if (prevState.workTime && input === 'workLength') {
           return {
             ...prevState,
+            intClock: newTime,
             displayTime: newDisplayTime,
             workLength: newSessionLength
           }
@@ -96,6 +97,7 @@ class App extends Component {
         else if (!prevState.workTime && input === 'breakLength') {
           return {
             ...prevState,
+            intClock: newTime,
             displayTime: newDisplayTime,
             breakLength: newSessionLength
           }
@@ -123,6 +125,7 @@ class App extends Component {
         if (prevState.workTime && input === 'workLength') {
           return {
             ...prevState,
+            intClock: newTime,
             displayTime: newDisplayTime,
             workLength: newSessionLength
           }
@@ -131,6 +134,7 @@ class App extends Component {
         else if (!prevState.workTime && input === 'breakLength') {
           return {
             ...prevState,
+            intClock: newTime,
             displayTime: newDisplayTime,
             breakLength: newSessionLength
           }
