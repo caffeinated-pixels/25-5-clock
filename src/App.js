@@ -5,13 +5,40 @@ class App extends Component {
     intClock: 1500,
     min: '25',
     secs: '00',
+    isTimerRunning: false,
+    intervalId: null,
     breakLength: 5,
-    workLength: 25,
-    isTimerRunning: false
+    workLength: 25
   }
 
   handleStartStop = () => {
-    console.log('Start button clicked')
+    // console.log('Start button clicked')
+    if (!this.state.isTimerRunning) {
+      console.log('clock start')
+      // console.log(prevState.intClock - 1)
+      const newIntervalId = setInterval(() => {
+        this.setState(prevState => {
+          const newTime = prevState.intClock - 1
+          const newMin = String(Math.floor(newTime / 60))
+          const newSecs = String(newTime % 60)
+
+          return {
+            ...prevState,
+            intClock: newTime,
+            min: newMin,
+            secs: newSecs,
+            isTimerRunning: true,
+            intervalId: newIntervalId
+          }
+        })
+      }, 1000)
+    } else {
+      console.log('clock stop')
+      this.setState(prevState => {
+        clearInterval(prevState.intervalId)
+        return { ...prevState, isTimerRunning: false }
+      })
+    }
   }
 
   render() {
