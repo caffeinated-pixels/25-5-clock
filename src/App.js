@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
+const initialState = {
+  intClock: 10, // the real clock!
+  min: '25', // quotient of intClock / 60
+  secs: '00', // remainder of intClock / 60 (ie intClock % 60)
+  isTimerRunning: false,
+  intervalId: null, // store the setInterval() id so we can stop the timer
+  workTime: true, // are we on the work session?; false = break session
+  breakLength: 5, // default = 5; min = 1; max = 60
+  workLength: 25 // default = 25; min = 1; max = 60
+}
+
 class App extends Component {
-  state = {
-    intClock: 10, // the real clock!
-    min: '25', // quotient of intClock / 60
-    secs: '00', // remainder of intClock / 60 (ie intClock % 60)
-    isTimerRunning: false,
-    intervalId: null, // store the setInterval() id so we can stop the timer
-    workTime: true, // are we on the work session?; false = break session
-    breakLength: 5, // default = 5; min = 1; max = 60
-    workLength: 25 // default = 25; min = 1; max = 60
-  }
+  state = { ...initialState } // initialize state values
 
   handleStartStop = () => {
     if (!this.state.isTimerRunning) {
@@ -70,16 +72,7 @@ class App extends Component {
     clearInterval(this.state.intervalId) // stop timer if running
 
     // reset all values in state
-    this.setState({
-      intClock: 1500,
-      min: '25',
-      secs: '00',
-      isTimerRunning: false,
-      intervalId: null,
-      workTime: true,
-      breakLength: 5,
-      workLength: 25
-    })
+    this.setState({ ...initialState })
   }
 
   handleIncrement = input => {
