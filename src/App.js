@@ -39,18 +39,19 @@ class App extends Component {
           }
 
           const newTime = prevState.intClock - 1
+          const newDisplayTime = this.calcDisplaytime(newTime)
 
-          let newMin = String(Math.floor(newTime / 60)) // get quotient
-          let newSecs = String(newTime % 60) // get remainder
-
-          // need to add zero for single digit numbers
-          if (newMin.length === 1) newMin = '0' + newMin
-          if (newSecs.length === 1) newSecs = '0' + newSecs
+          // let newMin = String(Math.floor(newTime / 60)) // get quotient
+          // let newSecs = String(newTime % 60) // get remainder
+          //
+          // // need to add zero for single digit numbers
+          // if (newMin.length === 1) newMin = '0' + newMin
+          // if (newSecs.length === 1) newSecs = '0' + newSecs
 
           return {
             ...prevState,
             intClock: newTime,
-            displayTime: newMin + ':' + newSecs,
+            displayTime: newDisplayTime,
             isTimerRunning: true,
             intervalId: newIntervalId
           }
@@ -93,6 +94,17 @@ class App extends Component {
         return { ...prevState }
       }
     })
+  }
+
+  calcDisplaytime = newTime => {
+    let newMin = String(Math.floor(newTime / 60)) // get quotient
+    let newSecs = String(newTime % 60) // get remainder
+
+    // need to add zero for single digit numbers
+    if (newMin.length === 1) newMin = '0' + newMin
+    if (newSecs.length === 1) newSecs = '0' + newSecs
+
+    return newMin + ':' + newSecs
   }
 
   render() {
