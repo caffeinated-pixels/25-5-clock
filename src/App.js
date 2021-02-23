@@ -8,8 +8,8 @@ class App extends Component {
     isTimerRunning: false,
     intervalId: null, // store the setInterval() id so we can stop the timer
     workTime: true, // are we on the work session?; false = break session
-    breakLength: 5,
-    workLength: 25
+    breakLength: 5, // max = 60
+    workLength: 25 // max = 60
   }
 
   handleStartStop = () => {
@@ -53,6 +53,10 @@ class App extends Component {
     }
   }
 
+  handleReset = () => {
+    console.log('reset clicked')
+  }
+
   render() {
     return (
       <main className="main-wrapper">
@@ -61,6 +65,7 @@ class App extends Component {
           min={this.state.min}
           secs={this.state.secs}
           handleStartStop={this.handleStartStop}
+          handleReset={this.handleReset}
         />
         <SessionBtns
           breakLength={this.state.breakLength}
@@ -92,7 +97,7 @@ const Timer = props => {
         <div id="time-left" className="time-left">
           {props.min}:{props.secs}
         </div>
-        <button id="reset" className="reset">
+        <button id="reset" className="reset" onClick={props.handleReset}>
           R
         </button>
       </div>
