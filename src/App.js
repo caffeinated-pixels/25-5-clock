@@ -121,10 +121,8 @@ const Header = () => {
 }
 
 const Timer = props => {
-  let timerLabel // assign text based on state.workTime
-  props.workTime
-    ? (timerLabel = 'Work it baby!')
-    : (timerLabel = 'Slacking time!')
+  // assign text based on state.workTime
+  const timerLabel = props.workTime ? 'Work it baby!' : 'Slacking time!'
 
   return (
     <div>
