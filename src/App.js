@@ -74,7 +74,7 @@ class App extends Component {
     this.setState({ ...initialState })
   }
 
-  // TODO: refactor handleIncrement & handleDecrement into single fn???
+  // TODO: refactor handleIncrement & handleDecrement into single fn??? Seem to repeat a fair amount of code here
   handleIncrement = input => {
     this.setState(prevState => {
       const newSessionLength = prevState[input] + 1
