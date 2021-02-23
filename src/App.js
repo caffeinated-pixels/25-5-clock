@@ -8,8 +8,8 @@ class App extends Component {
     isTimerRunning: false,
     intervalId: null, // store the setInterval() id so we can stop the timer
     workTime: true, // are we on the work session?; false = break session
-    breakLength: 58, // default = 5; max = 60
-    workLength: 58 // default = 25; max = 60
+    breakLength: 5, // default = 5; min = 1; max = 60
+    workLength: 25 // default = 25; min = 1; max = 60
   }
 
   handleStartStop = () => {
@@ -19,13 +19,8 @@ class App extends Component {
       // we need to put the intervalId into state so that we can stop later using clearInterval()
       const newIntervalId = setInterval(() => {
         this.setState(prevState => {
-          // if (prevState.intClock === 0) {
-          //   clearInterval(prevState.intervalId)
-          //   console.log('clock stop')
-          //   return { ...prevState, isTimerRunning: false }
-          // }
-
           if (prevState.intClock === 0 && prevState.workTime) {
+            // switch to break clock
             console.log('switch to breaktime')
             return {
               ...prevState,
@@ -33,6 +28,7 @@ class App extends Component {
               workTime: false
             }
           } else if (prevState.intClock === 0 && !prevState.workTime) {
+            // switch to work clock
             console.log('switch to worktime')
             return {
               ...prevState,
@@ -88,6 +84,7 @@ class App extends Component {
 
   handleIncrement = input => {
     this.setState(prevState => {
+      // only increment if less than 60
       if (prevState[input] < 60) {
         return { ...prevState, [input]: prevState[input] + 1 }
       } else {
@@ -98,6 +95,7 @@ class App extends Component {
 
   handleDecrement = input => {
     this.setState(prevState => {
+      //only decrement if greater than 1
       if (prevState[input] > 1) {
         return { ...prevState, [input]: prevState[input] - 1 }
       } else {
@@ -133,7 +131,7 @@ const Header = () => {
 }
 
 const Timer = props => {
-  let timerLabel
+  let timerLabel // assign text based on state.workTime
   props.workTime
     ? (timerLabel = 'Work it baby!')
     : (timerLabel = 'Slacking time!')
