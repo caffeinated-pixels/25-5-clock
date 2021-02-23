@@ -8,8 +8,8 @@ class App extends Component {
     isTimerRunning: false,
     intervalId: null, // store the setInterval() id so we can stop the timer
     workTime: true, // are we on the work session?; false = break session
-    breakLength: 1, // max = 60
-    workLength: 1 // max = 60
+    breakLength: 58, // default = 5; max = 60
+    workLength: 58 // default = 25; max = 60
   }
 
   handleStartStop = () => {
@@ -87,11 +87,23 @@ class App extends Component {
   }
 
   handleIncrement = input => {
-    console.log('increment ' + input)
+    this.setState(prevState => {
+      if (prevState[input] < 60) {
+        return { ...prevState, [input]: prevState[input] + 1 }
+      } else {
+        return { ...prevState }
+      }
+    })
   }
 
   handleDecrement = input => {
-    console.log('decrement ' + input)
+    this.setState(prevState => {
+      if (prevState[input] > 1) {
+        return { ...prevState, [input]: prevState[input] - 1 }
+      } else {
+        return { ...prevState }
+      }
+    })
   }
 
   render() {
