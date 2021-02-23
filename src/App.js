@@ -84,8 +84,8 @@ class App extends Component {
 
   handleIncrement = input => {
     this.setState(prevState => {
-      // only increment if less than 60
-      if (prevState[input] < 60) {
+      // only increment if <60 and timer stopped
+      if (prevState[input] < 60 && !this.state.isTimerRunning) {
         return { ...prevState, [input]: prevState[input] + 1 }
       } else {
         return { ...prevState }
@@ -95,8 +95,8 @@ class App extends Component {
 
   handleDecrement = input => {
     this.setState(prevState => {
-      //only decrement if greater than 1
-      if (prevState[input] > 1) {
+      // only decrement if >1 and timer stopped
+      if (prevState[input] > 1 && !this.state.isTimerRunning) {
         return { ...prevState, [input]: prevState[input] - 1 }
       } else {
         return { ...prevState }
