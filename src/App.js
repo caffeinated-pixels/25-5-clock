@@ -8,8 +8,8 @@ class App extends Component {
     isTimerRunning: false,
     intervalId: null, // store the setInterval() id so we can stop the timer
     workTime: true, // are we on the work session?; false = break session
-    breakLength: 5, // max = 60
-    workLength: 25 // max = 60
+    breakLength: 1, // max = 60
+    workLength: 1 // max = 60
   }
 
   handleStartStop = () => {
@@ -19,10 +19,26 @@ class App extends Component {
       // we need to put the intervalId into state so that we can stop later using clearInterval()
       const newIntervalId = setInterval(() => {
         this.setState(prevState => {
-          if (prevState.intClock === 0) {
-            clearInterval(prevState.intervalId)
-            console.log('clock stop')
-            return { ...prevState, isTimerRunning: false }
+          // if (prevState.intClock === 0) {
+          //   clearInterval(prevState.intervalId)
+          //   console.log('clock stop')
+          //   return { ...prevState, isTimerRunning: false }
+          // }
+
+          if (prevState.intClock === 0 && prevState.workTime) {
+            console.log('switch to breaktime')
+            return {
+              ...prevState,
+              intClock: prevState.breakLength * 60,
+              workTime: false
+            }
+          } else if (prevState.intClock === 0 && !prevState.workTime) {
+            console.log('switch to worktime')
+            return {
+              ...prevState,
+              intClock: prevState.workLength * 60,
+              workTime: true
+            }
           }
 
           const newTime = prevState.intClock - 1
@@ -79,6 +95,7 @@ class App extends Component {
           secs={this.state.secs}
           handleStartStop={this.handleStartStop}
           handleReset={this.handleReset}
+          workTime={this.state.workTime}
         />
         <SessionBtns
           breakLength={this.state.breakLength}
@@ -94,10 +111,15 @@ const Header = () => {
 }
 
 const Timer = props => {
+  let timerLabel
+  props.workTime
+    ? (timerLabel = 'Work it baby!')
+    : (timerLabel = 'Slacking time!')
+
   return (
     <div>
       <div id="timer-label" className="timer-label">
-        Work it baby!
+        {timerLabel}
       </div>
       <div className="timer-wrapper">
         <button
