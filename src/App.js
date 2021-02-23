@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 const initialState = {
-  intClock: 10, // the real clock!
+  intClock: 1500, // the real clock! default = 1500 secs
   min: '25', // quotient of intClock / 60
   secs: '00', // remainder of intClock / 60 (ie intClock % 60)
   isTimerRunning: false,
@@ -168,7 +168,7 @@ const SessionBtns = props => {
           >
             +
           </button>
-          <div>{props.breakLength}</div>
+          <div id="break-length">{props.breakLength}</div>
           <button
             id="break-decrement"
             className="settings-btn"
@@ -192,7 +192,7 @@ const SessionBtns = props => {
           >
             +
           </button>
-          <div>{props.workLength}</div>
+          <div id="session-length">{props.workLength}</div>
           <button
             id="session-decrement"
             className="settings-btn"
