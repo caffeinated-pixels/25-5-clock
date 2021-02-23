@@ -19,6 +19,12 @@ class App extends Component {
       // we need to put the intervalId into state so that we can stop later using clearInterval()
       const newIntervalId = setInterval(() => {
         this.setState(prevState => {
+          if (prevState.intClock === 0) {
+            clearInterval(prevState.intervalId)
+            console.log('clock stop')
+            return { ...prevState, isTimerRunning: false }
+          }
+
           const newTime = prevState.intClock - 1
 
           let newMin = String(Math.floor(newTime / 60)) // get quotient
