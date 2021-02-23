@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 class App extends Component {
   state = {
-    timerDisplay: '25:00',
+    intClock: 1500,
+    min: '25',
+    secs: '00',
     breakLength: 5,
     workLength: 25,
     isTimerRunning: false
@@ -12,8 +14,11 @@ class App extends Component {
     return (
       <main className="main-wrapper">
         <Header />
-        <Timer />
-        <SessionBtns />
+        <Timer min={this.state.min} secs={this.state.secs} />
+        <SessionBtns
+          breakLength={this.state.breakLength}
+          workLength={this.state.workLength}
+        />
       </main>
     )
   }
@@ -34,7 +39,7 @@ const Timer = props => {
           P
         </button>
         <div id="time-left" className="time-left">
-          25:00
+          {props.min}:{props.secs}
         </div>
         <button id="reset" className="reset">
           R
@@ -55,7 +60,7 @@ const SessionBtns = props => {
           <button id="break-increment" className="settings-btn">
             +
           </button>
-          <div>5</div>
+          <div>{props.breakLength}</div>
           <button id="break-decrement" className="settings-btn">
             -
           </button>
@@ -71,7 +76,7 @@ const SessionBtns = props => {
           <button id="session-increment" className="settings-btn">
             +
           </button>
-          <div>5</div>
+          <div>{props.workLength}</div>
           <button id="session-decrement" className="settings-btn">
             -
           </button>
