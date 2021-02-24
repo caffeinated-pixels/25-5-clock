@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 const initialState = {
   intClock: 1500, // the real clock! default = 1500 secs
-  displayTime: '25:00', // calculated from intClock
   isTimerRunning: false,
   intervalId: null, // store the setInterval() id so we can stop the timer
   workTime: true, // are we on the work session?; false = break session
@@ -40,7 +39,7 @@ class App extends Component {
           }
 
           const newTime = prevState.intClock - 1
-          const newDisplayTime = this.calcDisplaytime(newTime)
+          // const newDisplayTime = this.calcDisplaytime(newTime)
 
           // let newMin = String(Math.floor(newTime / 60)) // get quotient
           // let newSecs = String(newTime % 60) // get remainder
@@ -52,7 +51,7 @@ class App extends Component {
           return {
             ...prevState,
             intClock: newTime,
-            displayTime: newDisplayTime,
+            // displayTime: newDisplayTime,
             isTimerRunning: true,
             intervalId: newIntervalId
           }
@@ -80,7 +79,6 @@ class App extends Component {
     this.setState(prevState => {
       const newSessionLength = prevState[input] + 1
       const newTime = newSessionLength * 60
-      let newDisplayTime = this.calcDisplaytime(newTime)
 
       // only increment if <60 and timer stopped
       if (prevState[input] < 60 && !this.state.isTimerRunning) {
@@ -89,7 +87,6 @@ class App extends Component {
           return {
             ...prevState,
             intClock: newTime,
-            displayTime: newDisplayTime,
             workLength: newSessionLength
           }
         }
@@ -99,7 +96,6 @@ class App extends Component {
           return {
             ...prevState,
             intClock: newTime,
-            displayTime: newDisplayTime,
             breakLength: newSessionLength
           }
         } else {
@@ -115,7 +111,6 @@ class App extends Component {
     this.setState(prevState => {
       const newSessionLength = prevState[input] - 1
       const newTime = newSessionLength * 60
-      let newDisplayTime = this.calcDisplaytime(newTime)
 
       /* We only want the user to update session times when the timer is stopped.
       If we are currently in the session being changed, the display needs to update */
@@ -127,7 +122,6 @@ class App extends Component {
           return {
             ...prevState,
             intClock: newTime,
-            displayTime: newDisplayTime,
             workLength: newSessionLength
           }
         }
@@ -136,7 +130,6 @@ class App extends Component {
           return {
             ...prevState,
             intClock: newTime,
-            displayTime: newDisplayTime,
             breakLength: newSessionLength
           }
         } else {
@@ -149,9 +142,9 @@ class App extends Component {
   }
 
   // HELPER FUNCTIONS
-  calcDisplaytime = newTime => {
-    let newMin = String(Math.floor(newTime / 60)) // get quotient
-    let newSecs = String(newTime % 60) // get remainder
+  calcDisplaytime = () => {
+    let newMin = String(Math.floor(this.state.intClock / 60)) // get quotient
+    let newSecs = String(this.state.intClock % 60) // get remainder
 
     // need to add zero for single digit numbers
     if (newMin.length === 1) newMin = '0' + newMin
@@ -166,10 +159,10 @@ class App extends Component {
       <main className="main-wrapper">
         <Header />
         <Timer
-          displayTime={this.state.displayTime}
           handleStartStop={this.handleStartStop}
           handleReset={this.handleReset}
           workTime={this.state.workTime}
+          calcDisplaytime={this.calcDisplaytime}
         />
         <SessionBtns
           breakLength={this.state.breakLength}
@@ -204,7 +197,7 @@ const Timer = props => {
           P
         </button>
         <div id="time-left" className="time-left">
-          {props.displayTime}
+          {props.calcDisplaytime()}
         </div>
         <button id="reset" className="reset" onClick={props.handleReset}>
           R
