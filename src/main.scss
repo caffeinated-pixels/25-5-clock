@@ -10,6 +10,8 @@ $border-default: 1px solid black;
   }
 }
 
+// TODO: englarge everything for >768px displays
+
 // Start of SHARED CLASSES
 * {
   margin: 0;
@@ -83,8 +85,6 @@ button {
   text-align: center;
 }
 
-// FIXME: buttons moving as timer display changes
-
 .start-stop, .reset {
   font-size: 1.5rem;
 }
@@ -131,4 +131,9 @@ button {
 .settings-btn {
   width: 25px;
   height: 25px;
+}
+
+.settings-time {
+  width: 40px;
+  font-size: 1.5rem;
 }

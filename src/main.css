@@ -93,3 +93,8 @@ button:active {
   width: 25px;
   height: 25px;
 }
+
+.settings-time {
+  width: 40px;
+  font-size: 1.5rem;
+}

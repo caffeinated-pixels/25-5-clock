@@ -240,7 +240,9 @@ const SessionBtns = props => {
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
-          <div id="break-length">{props.breakLength}</div>
+          <div id="break-length" className="settings-time">
+            {props.breakLength}
+          </div>
           <button
             id="break-decrement"
             className="settings-btn"
@@ -266,7 +268,9 @@ const SessionBtns = props => {
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
-          <div id="session-length">{props.workLength}</div>
+          <div id="session-length" className="settings-time">
+            {props.workLength}
+          </div>
           <button
             id="session-decrement"
             className="settings-btn"
