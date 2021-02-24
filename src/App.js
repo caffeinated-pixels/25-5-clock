@@ -12,21 +12,19 @@ const initialState = {
 class App extends Component {
   state = { ...initialState } // initialize state values
 
-  // TODO: need to stop timer before switching to new countdown
   handleStartStop = () => {
     if (!this.state.isTimerRunning) {
-      console.log('clock start')
-
+      // console.log('clock start')
+      // runTimer executes setInterval() and returns the intervalId, which we need for clearInterval() to stop the timer
       this.setState({ intervalId: this.runTimer(), isTimerRunning: true })
     } else {
-      console.log('clock stop')
+      // console.log('clock stop')
       clearInterval(this.state.intervalId)
       this.setState({ isTimerRunning: false })
     }
   }
 
   handleReset = () => {
-    console.log('reset clicked')
     clearInterval(this.state.intervalId) // stop timer if running
 
     // reset all values in state
@@ -104,26 +102,26 @@ class App extends Component {
 
   // HELPER FUNCTIONS
   runTimer = () => {
-    // we need to put the intervalId into state so that we can stop later using clearInterval()
+    // we return the value (intervalId) from setInterval so we can stop the timer later using clearInterval(this.state.intervalId)
     return setInterval(() => {
       this.setState(prevState => {
-        if (prevState.intClock === 0 && prevState.workTime) {
-          // switch to break clock
-          console.log('switch to breaktime')
+        if (prevState.intClock === 0) {
+          // we timer reaches we play the alarm sound and switch to the new timer
           this.refs.alarm.play()
-          return {
-            ...prevState,
-            intClock: prevState.breakLength * 60,
-            workTime: false
-          }
-        } else if (prevState.intClock === 0 && !prevState.workTime) {
-          // switch to work clock
-          console.log('switch to worktime')
-          this.refs.alarm.play()
-          return {
-            ...prevState,
-            intClock: prevState.workLength * 60,
-            workTime: true
+          if (prevState.workTime) {
+            // switch to break clock
+            return {
+              ...prevState,
+              intClock: prevState.breakLength * 60,
+              workTime: false
+            }
+          } else {
+            // switch to work clock
+            return {
+              ...prevState,
+              intClock: prevState.workLength * 60,
+              workTime: true
+            }
           }
         }
 
