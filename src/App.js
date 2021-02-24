@@ -210,6 +210,7 @@ const Timer = props => {
         </button>
         <div id="time-left" className={timeClass}>
           {props.calcDisplaytime()}
+          <hr />
         </div>
         <button
           id="reset"
@@ -229,7 +230,7 @@ const SessionBtns = props => {
     <div className="outer-settings-wrapper">
       <div className="break-wrapper">
         <div id="break-label" className="settings-label">
-          Breaktime
+          Break timer
         </div>
         <div className="settings-wrapper">
           <button
@@ -255,9 +256,8 @@ const SessionBtns = props => {
       </div>
 
       <div className="session-wrapper">
-        <div className="settings-wrapper"></div>
         <div id="session-label" className="settings-label">
-          Worktime
+          Work timer
         </div>
         <div className="settings-wrapper">
           <button
