@@ -4,7 +4,8 @@ import {
   faRedoAlt,
   faPlay,
   faPlus,
-  faMinus
+  faMinus,
+  faPause
 } from '@fortawesome/free-solid-svg-icons'
 
 const initialState = {
@@ -162,6 +163,7 @@ class App extends Component {
           calcDisplaytime={this.calcDisplaytime}
           workTime={this.state.workTime}
           intClock={this.state.intClock}
+          isTimerRunning={this.state.isTimerRunning}
         />
         <SessionBtns
           breakLength={this.state.breakLength}
@@ -189,6 +191,8 @@ const Timer = props => {
   const timerLabel = props.workTime ? 'Work it baby!' : 'Slacking time!'
   const timeClass = props.intClock < 61 ? 'time-left warning' : 'time-left'
 
+  const playPause = props.isTimerRunning ? faPause : faPlay
+
   return (
     <div>
       <div id="timer-label" className="timer-label">
@@ -200,7 +204,7 @@ const Timer = props => {
           className="start-stop"
           onClick={props.handleStartStop}
         >
-          <FontAwesomeIcon icon={faPlay} />
+          <FontAwesomeIcon icon={playPause} />
         </button>
         <div id="time-left" className={timeClass}>
           {props.calcDisplaytime()}
