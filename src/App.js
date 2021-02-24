@@ -108,6 +108,7 @@ class App extends Component {
         if (prevState.intClock === 0 && prevState.workTime) {
           // switch to break clock
           console.log('switch to breaktime')
+          document.getElementById('beep').play()
           return {
             ...prevState,
             intClock: prevState.breakLength * 60,
@@ -116,6 +117,7 @@ class App extends Component {
         } else if (prevState.intClock === 0 && !prevState.workTime) {
           // switch to work clock
           console.log('switch to worktime')
+          document.getElementById('beep').play()
           return {
             ...prevState,
             intClock: prevState.workLength * 60,
