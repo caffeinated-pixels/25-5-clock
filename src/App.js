@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 const initialState = {
-  intClock: 1500, // the real clock! default = 1500 secs
+  intClock: 1500, // the internal seconds count; default = 1500 secs
   isTimerRunning: false,
   intervalId: null, // store the setInterval() id so we can stop the timer
-  workTime: true, // are we on the work session?; false = break session
+  workTime: true, // true = work timer; false = break timer
   breakLength: 5, // default = 5; min = 1; max = 60
   workLength: 25 // default = 25; min = 1; max = 60
 }
