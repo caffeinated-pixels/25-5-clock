@@ -192,6 +192,7 @@ const Timer = props => {
   const timeClass = props.intClock < 61 ? 'time-left warning' : 'time-left'
 
   const playPause = props.isTimerRunning ? faPause : faPlay
+  const ariaLabel = props.isTimerRunning ? 'Pause timer' : 'Start timer'
 
   return (
     <div>
@@ -203,13 +204,19 @@ const Timer = props => {
           id="start_stop"
           className="start-stop"
           onClick={props.handleStartStop}
+          aria-label={ariaLabel}
         >
           <FontAwesomeIcon icon={playPause} />
         </button>
         <div id="time-left" className={timeClass}>
           {props.calcDisplaytime()}
         </div>
-        <button id="reset" className="reset" onClick={props.handleReset}>
+        <button
+          id="reset"
+          className="reset"
+          onClick={props.handleReset}
+          aria-label="Reset timer"
+        >
           <FontAwesomeIcon icon={faRedoAlt} />
         </button>
       </div>
@@ -229,6 +236,7 @@ const SessionBtns = props => {
             id="break-increment"
             className="settings-btn"
             onClick={() => props.handleIncrement('breakLength')}
+            aria-label="Increment break timer"
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
@@ -237,6 +245,7 @@ const SessionBtns = props => {
             id="break-decrement"
             className="settings-btn"
             onClick={() => props.handleDecrement('breakLength')}
+            aria-label="Decrement break timer"
           >
             <FontAwesomeIcon icon={faMinus} />
           </button>
@@ -253,6 +262,7 @@ const SessionBtns = props => {
             id="session-increment"
             className="settings-btn"
             onClick={() => props.handleIncrement('workLength')}
+            aria-label="Increment work timer"
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
@@ -261,6 +271,7 @@ const SessionBtns = props => {
             id="session-decrement"
             className="settings-btn"
             onClick={() => props.handleDecrement('workLength')}
+            aria-label="Decrement work timer"
           >
             <FontAwesomeIcon icon={faMinus} />
           </button>
