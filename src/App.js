@@ -17,43 +17,11 @@ class App extends Component {
     if (!this.state.isTimerRunning) {
       console.log('clock start')
 
-      // we need to put the intervalId into state so that we can stop later using clearInterval()
-      const newIntervalId = setInterval(() => {
-        this.setState(prevState => {
-          if (prevState.intClock === 0 && prevState.workTime) {
-            // switch to break clock
-            console.log('switch to breaktime')
-            return {
-              ...prevState,
-              intClock: prevState.breakLength * 60,
-              workTime: false
-            }
-          } else if (prevState.intClock === 0 && !prevState.workTime) {
-            // switch to work clock
-            console.log('switch to worktime')
-            return {
-              ...prevState,
-              intClock: prevState.workLength * 60,
-              workTime: true
-            }
-          }
-
-          const newTime = prevState.intClock - 1
-
-          return {
-            ...prevState,
-            intClock: newTime,
-            isTimerRunning: true,
-            intervalId: newIntervalId
-          }
-        })
-      }, 1000)
+      this.setState({ intervalId: this.runTimer(), isTimerRunning: true })
     } else {
       console.log('clock stop')
-      this.setState(prevState => {
-        clearInterval(prevState.intervalId)
-        return { ...prevState, isTimerRunning: false }
-      })
+      clearInterval(this.state.intervalId)
+      this.setState({ isTimerRunning: false })
     }
   }
 
@@ -133,6 +101,38 @@ class App extends Component {
   }
 
   // HELPER FUNCTIONS
+  runTimer = () => {
+    // we need to put the intervalId into state so that we can stop later using clearInterval()
+    return setInterval(() => {
+      this.setState(prevState => {
+        if (prevState.intClock === 0 && prevState.workTime) {
+          // switch to break clock
+          console.log('switch to breaktime')
+          return {
+            ...prevState,
+            intClock: prevState.breakLength * 60,
+            workTime: false
+          }
+        } else if (prevState.intClock === 0 && !prevState.workTime) {
+          // switch to work clock
+          console.log('switch to worktime')
+          return {
+            ...prevState,
+            intClock: prevState.workLength * 60,
+            workTime: true
+          }
+        }
+
+        const newTime = prevState.intClock - 1
+
+        return {
+          ...prevState,
+          intClock: newTime
+        }
+      })
+    }, 1000)
+  }
+
   calcDisplaytime = () => {
     let newMin = String(Math.floor(this.state.intClock / 60)) // get quotient
     let newSecs = String(this.state.intClock % 60) // get remainder
