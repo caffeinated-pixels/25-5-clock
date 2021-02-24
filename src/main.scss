@@ -18,7 +18,7 @@ $border-default: 1px solid black;
 }
 
 html {
-  font-size: 120%;
+  font-size: 100%;
   // @include mq(768px) {
   //   font-size: 150%;
   // }
@@ -28,6 +28,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: 'Righteous', cursive;
 
   height: 100vh;
   // width: 100vw;

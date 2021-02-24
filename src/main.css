@@ -5,13 +5,14 @@
 }
 
 html {
-  font-size: 120%;
+  font-size: 100%;
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Righteous', cursive;
   height: 100vh;
   background-color: lightblue;
   background: linear-gradient(180deg, #dffeff 0%, #ade4e6 100%);
