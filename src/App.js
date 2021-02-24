@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRedoAlt, faPlay } from '@fortawesome/free-solid-svg-icons'
+import {
+  faRedoAlt,
+  faPlay,
+  faPlus,
+  faMinus
+} from '@fortawesome/free-solid-svg-icons'
 
 const initialState = {
   intClock: 1500, // the internal seconds count; default = 1500 secs
@@ -221,7 +226,7 @@ const SessionBtns = props => {
             className="settings-btn"
             onClick={() => props.handleIncrement('breakLength')}
           >
-            +
+            <FontAwesomeIcon icon={faPlus} />
           </button>
           <div id="break-length">{props.breakLength}</div>
           <button
@@ -229,7 +234,7 @@ const SessionBtns = props => {
             className="settings-btn"
             onClick={() => props.handleDecrement('breakLength')}
           >
-            -
+            <FontAwesomeIcon icon={faMinus} />
           </button>
         </div>
       </div>
@@ -245,7 +250,7 @@ const SessionBtns = props => {
             className="settings-btn"
             onClick={() => props.handleIncrement('workLength')}
           >
-            +
+            <FontAwesomeIcon icon={faPlus} />
           </button>
           <div id="session-length">{props.workLength}</div>
           <button
@@ -253,7 +258,7 @@ const SessionBtns = props => {
             className="settings-btn"
             onClick={() => props.handleDecrement('workLength')}
           >
-            -
+            <FontAwesomeIcon icon={faMinus} />
           </button>
         </div>
       </div>
