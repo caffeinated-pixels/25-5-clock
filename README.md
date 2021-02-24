@@ -5,7 +5,6 @@ My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/l
 ## To-do
 
 - look into replacing `setInterval()` with Accurate_Interval.js by Squuege
-- play icon that turns into a pause icon
 - make it pretty
 
 ## Notes
