@@ -1,4 +1,4 @@
-# 25 + 5 clock
+# 25 + 5 clock (Pomodoro Clock)
 
 My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-25--5-clock) freeCodeCamp Front End Development Libraries project. Also known as a Pomodoro clock, apparently!
 
