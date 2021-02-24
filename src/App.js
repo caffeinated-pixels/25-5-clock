@@ -161,6 +161,11 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           handleDecrement={this.handleDecrement}
         />
+        <audio
+          id="beep"
+          src="https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/alarm.mp3"
+          preload="auto"
+        />
       </main>
     )
   }
