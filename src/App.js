@@ -152,8 +152,9 @@ class App extends Component {
         <Timer
           handleStartStop={this.handleStartStop}
           handleReset={this.handleReset}
-          workTime={this.state.workTime}
           calcDisplaytime={this.calcDisplaytime}
+          workTime={this.state.workTime}
+          intClock={this.state.intClock}
         />
         <SessionBtns
           breakLength={this.state.breakLength}
@@ -179,6 +180,7 @@ const Header = () => {
 const Timer = props => {
   // assign text based on state.workTime
   const timerLabel = props.workTime ? 'Work it baby!' : 'Slacking time!'
+  const timeClass = props.intClock < 61 ? 'time-left warning' : 'time-left'
 
   return (
     <div>
@@ -193,7 +195,7 @@ const Timer = props => {
         >
           P
         </button>
-        <div id="time-left" className="time-left">
+        <div id="time-left" className={timeClass}>
           {props.calcDisplaytime()}
         </div>
         <button id="reset" className="reset" onClick={props.handleReset}>
