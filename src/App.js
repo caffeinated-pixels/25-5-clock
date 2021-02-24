@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRedoAlt } from '@fortawesome/free-solid-svg-icons'
 
 const initialState = {
   intClock: 1500, // the internal seconds count; default = 1500 secs
@@ -199,7 +201,7 @@ const Timer = props => {
           {props.calcDisplaytime()}
         </div>
         <button id="reset" className="reset" onClick={props.handleReset}>
-          R
+          <FontAwesomeIcon icon={faRedoAlt} />
         </button>
       </div>
     </div>
