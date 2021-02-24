@@ -5,7 +5,10 @@ My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/l
 ## To-do
 
 - look into replacing `setInterval()` with Accurate_Interval.js by Squuege
-- make it pretty
+- make it pretty:
+  - media query 768px
+  - color scheme
+  - tomato background?
 
 ## Notes
 
