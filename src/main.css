@@ -59,6 +59,7 @@ button:active {
 }
 
 .time-left {
+  width: 160px;
   font-size: 3.5rem;
 }
 
