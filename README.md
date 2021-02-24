@@ -5,8 +5,6 @@ My React-based app for the [Build a 25 + 5 Clock](https://www.freecodecamp.org/l
 ## To-do
 
 - look into replacing `setInterval()` with Accurate_Interval.js by Squuege
-- get it to pass timer test #10
-- add in alarm sound
 - display colour changes based on time left (eg <=60 secs)
 - play icon that turns into a pause icon
 - make it pretty
