@@ -156,30 +156,32 @@ class App extends Component {
   // RENDER TIME
   render() {
     return (
-      <main className="main-wrapper">
-        <Header />
-        <Timer
-          handleStartStop={this.handleStartStop}
-          handleReset={this.handleReset}
-          calcDisplaytime={this.calcDisplaytime}
-          workTime={this.state.workTime}
-          intClock={this.state.intClock}
-          isTimerRunning={this.state.isTimerRunning}
-        />
-        <SessionBtns
-          breakLength={this.state.breakLength}
-          workLength={this.state.workLength}
-          handleIncrement={this.handleIncrement}
-          handleDecrement={this.handleDecrement}
-        />
+      <div>
+        <main className="main-wrapper">
+          <Header />
+          <Timer
+            handleStartStop={this.handleStartStop}
+            handleReset={this.handleReset}
+            calcDisplaytime={this.calcDisplaytime}
+            workTime={this.state.workTime}
+            intClock={this.state.intClock}
+            isTimerRunning={this.state.isTimerRunning}
+          />
+          <SessionBtns
+            breakLength={this.state.breakLength}
+            workLength={this.state.workLength}
+            handleIncrement={this.handleIncrement}
+            handleDecrement={this.handleDecrement}
+          />
+          <audio
+            id="beep"
+            src="https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/alarm.mp3"
+            preload="auto"
+            ref="alarm"
+          />
+        </main>
         <Footer />
-        <audio
-          id="beep"
-          src="https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/alarm.mp3"
-          preload="auto"
-          ref="alarm"
-        />
-      </main>
+      </div>
     )
   }
 }

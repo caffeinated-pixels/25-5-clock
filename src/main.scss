@@ -31,17 +31,31 @@ body {
   justify-content: center;
   align-items: center;
 
+  color: white;
   font-family: 'Righteous', cursive;
 
   height: 100vh;
   // width: 100vw;
 
-  background-color: lightblue;
-  background: linear-gradient(
-    180deg,
-    rgba(223, 254, 255, 1) 0%,
-    rgba(173, 228, 230, 1) 100%
-  );
+  // background-color: lightblue;
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(223, 254, 255, 1) 0%,
+  //   rgba(173, 228, 230, 1) 100%
+  // );
+
+  background: {
+    color: lightblue;
+    color: linear-gradient(
+      180deg,
+      rgba(223, 254, 255, 1) 0%,
+      rgba(173, 228, 230, 1) 100%
+    );
+    image: url(https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/tomato-37219_1280.png);
+    repeat: no-repeat;
+    position: center;
+    size: auto;
+  }
 }
 
 button {
@@ -67,12 +81,11 @@ button {
   &:focus,
   &:hover {
     outline-style: none;
-    // border: 2px solid #ff8718;
     color: #ff8718;
+    color: yellow;
   }
   &:active {
     transform: scale(0.93);
-    // background-color: #ff8718;
   }
 }
 // End of SHARED CLASSES
@@ -95,11 +108,10 @@ button {
 .start-stop,
 .reset {
   font-size: 1.5rem;
-
 }
 
 .icon {
-  filter: drop-shadow(1px 1px 1px $dark-grey)
+  filter: drop-shadow(1px 1px 1px $dark-grey);
 }
 
 .timer-label {
@@ -146,4 +158,28 @@ button {
 .settings-time {
   // width: 40px;
   font-size: 1.5rem;
+}
+
+footer {
+  // position relative to bottom of viewport (body)
+  position: absolute;
+  bottom: 5%;
+
+  // for centering horizontally
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  // font-size: 0.8rem;
+  text-align: center;
+
+  a {
+    color: #007af2;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      color: lightyellow;
+    }
+  }
 }

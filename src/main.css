@@ -12,10 +12,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
   font-family: 'Righteous', cursive;
   height: 100vh;
   background-color: lightblue;
-  background: linear-gradient(180deg, #dffeff 0%, #ade4e6 100%);
+  background-color: linear-gradient(180deg, #dffeff 0%, #ade4e6 100%);
+  background-image: url(https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/tomato-37219_1280.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
 }
 
 button {
@@ -36,6 +41,7 @@ button {
 button:focus, button:hover {
   outline-style: none;
   color: #ff8718;
+  color: yellow;
 }
 
 button:active {
@@ -104,4 +110,23 @@ button:active {
 
 .settings-time {
   font-size: 1.5rem;
+}
+
+footer {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+
+footer a {
+  color: #007af2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+footer a:hover, footer a:focus {
+  color: lightyellow;
 }
