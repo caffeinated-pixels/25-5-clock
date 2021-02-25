@@ -10,7 +10,7 @@ import {
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 const initialState = {
-  intClock: 1500, // the internal seconds count; default = 1500 secs
+  intClock: 1500, // internal seconds countdown; default = 1500 secs
   isTimerRunning: false, // self-explantory really!
   intervalId: null, // store the setInterval() id so we can stop the timer
   workTime: true, // true = work timer; false = break timer
@@ -21,12 +21,13 @@ const initialState = {
 class App extends Component {
   state = { ...initialState } // initialize state values
 
+  // EVENT HANDLERS
   handleStartStop = () => {
     if (!this.state.isTimerRunning) {
       // runTimer executes setInterval() and returns the intervalId, which we need for clearInterval() to stop the timer
       this.setState({ intervalId: this.runTimer(), isTimerRunning: true })
     } else {
-      clearInterval(this.state.intervalId)
+      clearInterval(this.state.intervalId) // stop the timer
       this.setState({ isTimerRunning: false })
     }
   }
@@ -34,13 +35,14 @@ class App extends Component {
   handleReset = () => {
     clearInterval(this.state.intervalId) // stop timer if running
 
-    // reset all values in state
-    this.setState({ ...initialState })
+    this.setState({ ...initialState }) // reset all values in state
+
     this.refs.alarm.pause() // stop the alarm sound
-    this.refs.alarm.currentTime = 0 // rewind the clip
+    this.refs.alarm.currentTime = 0 // rewind the sound clip
   }
 
-  // TODO: refactor handleIncrement & handleDecrement into single fn??? Seem to repeat a fair amount of code here
+  /* For Increment/Decrement, we only update session times when the timer is stopped.
+  If we are currently in the session being changed, the display needs to update */
   handleIncrement = input => {
     this.setState(prevState => {
       const newSessionLength = prevState[input] + 1
@@ -78,9 +80,6 @@ class App extends Component {
       const newSessionLength = prevState[input] - 1
       const newTime = newSessionLength * 60
 
-      /* We only want the user to update session times when the timer is stopped.
-      If we are currently in the session being changed, the display needs to update */
-
       // only increment if >1 and timer stopped
       if (prevState[input] > 1 && !this.state.isTimerRunning) {
         // if currently in work session & changing workLength
@@ -109,11 +108,11 @@ class App extends Component {
 
   // HELPER FUNCTIONS
   runTimer = () => {
-    // we return the value (intervalId) from setInterval so we can stop the timer later using clearInterval(this.state.intervalId)
+    // returns the value (intervalId) from setInterval so we can stop the timer later using clearInterval(this.state.intervalId)
     return setInterval(() => {
       this.setState(prevState => {
         if (prevState.intClock === 0) {
-          // we timer reaches we play the alarm sound and switch to the new timer
+          // if timer reaches 0, play the alarm sound and switch to the new timer
           this.refs.alarm.play()
           if (prevState.workTime) {
             // switch to break clock
@@ -132,7 +131,7 @@ class App extends Component {
           }
         }
 
-        const newTime = prevState.intClock - 1
+        const newTime = prevState.intClock - 1 // decrement intClock
 
         return {
           ...prevState,
@@ -150,7 +149,7 @@ class App extends Component {
     if (newMin.length === 1) newMin = '0' + newMin
     if (newSecs.length === 1) newSecs = '0' + newSecs
 
-    return newMin + ':' + newSecs
+    return newMin + ':' + newSecs // retrun in mm:ss format
   }
 
   // RENDER TIME
@@ -191,7 +190,7 @@ const Header = () => {
 }
 
 const Timer = props => {
-  // assign text based on state.workTime
+  // Conditional rendering
   const timerLabel = props.workTime ? 'Work it baby!' : 'Slacking time!'
   const timeClass = props.intClock < 61 ? 'time-left warning' : 'time-left'
 
@@ -301,7 +300,10 @@ const Footer = () => {
           Stevie Gill
         </a>
         {'; '}
-        <a href="#" title="JS calculator Github repo">
+        <a
+          href="https://github.com/caffeinated-pixels/25-5-clock"
+          title="Pomodoro Clock Github repo"
+        >
           <FontAwesomeIcon icon={faGithubSquare} className="githubIcon" /> repo
         </a>
       </p>
