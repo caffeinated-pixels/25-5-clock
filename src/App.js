@@ -213,7 +213,7 @@ const Timer = props => {
           <FontAwesomeIcon icon={playPause} className="icon" />
         </button>
         <div id="time-left" className={timeClass}>
-          {props.calcDisplaytime()}
+          <p>{props.calcDisplaytime()}</p>
           <hr />
         </div>
         <button
