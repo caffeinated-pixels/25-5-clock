@@ -16,11 +16,9 @@ body {
   font-family: 'Righteous', cursive;
   height: 100vh;
   background-color: lightblue;
-  background-color: linear-gradient(180deg, #dffeff 0%, #ade4e6 100%);
   background-image: url(https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/tomato-37219_1280.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: auto;
 }
 
 button {
@@ -76,13 +74,22 @@ button:active {
 
 .time-left {
   width: 160px;
+}
+
+.time-left p {
   font-size: 3.5rem;
   color: #fffffb;
   text-shadow: 2px 1px 3px #262525;
 }
 
+.time-left hr {
+  height: 2px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px #262525;
+}
+
 .warning {
-  color: red;
+  color: orange;
 }
 
 .outer-settings-wrapper {
@@ -114,16 +121,18 @@ button:active {
 
 footer {
   position: absolute;
-  bottom: 5%;
+  bottom: 8%;
   left: 0;
   right: 0;
   margin: auto;
+  font-size: 1.05rem;
   text-align: center;
 }
 
 footer a {
-  color: #007af2;
-  font-weight: 600;
+  color: black;
+  font-family: Arial;
+  font-weight: bold;
   text-decoration: none;
 }
 

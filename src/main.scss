@@ -1,16 +1,5 @@
 // SCSS VARIABLES
 $dark-grey: #262525;
-$box-shadow: 1px 1px 3px $dark-grey;
-$border-default: 1px solid black;
-
-// MIXINS
-@mixin mq($size) {
-  @media only screen and (min-width: $size) {
-    @content; // lets us pass content block into mixin
-  }
-}
-
-// TODO: englarge everything for >768px displays
 
 // Start of SHARED CLASSES
 * {
@@ -21,9 +10,6 @@ $border-default: 1px solid black;
 
 html {
   font-size: 100%;
-  // @include mq(768px) {
-  //   font-size: 150%;
-  // }
 }
 
 body {
@@ -35,26 +21,12 @@ body {
   font-family: 'Righteous', cursive;
 
   height: 100vh;
-  // width: 100vw;
-
-  // background-color: lightblue;
-  // background: linear-gradient(
-  //   180deg,
-  //   rgba(223, 254, 255, 1) 0%,
-  //   rgba(173, 228, 230, 1) 100%
-  // );
 
   background: {
     color: lightblue;
-    color: linear-gradient(
-      180deg,
-      rgba(223, 254, 255, 1) 0%,
-      rgba(173, 228, 230, 1) 100%
-    );
     image: url(https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/tomato-37219_1280.png);
     repeat: no-repeat;
     position: center;
-    size: auto;
   }
 }
 
@@ -63,11 +35,9 @@ button {
   height: 50px;
 
   display: inline-block;
-  // padding: 5px;
 
   border: none;
   border-radius: 100%;
-  // box-shadow: $box-shadow;
   background-color: transparent;
 
   cursor: pointer;
@@ -94,7 +64,6 @@ button {
 .main-wrapper {
   width: 300px;
   padding: 5px;
-  // background-color: lightyellow;
 
   text-align: center;
 }
@@ -122,13 +91,21 @@ button {
 
 .time-left {
   width: 160px;
-  font-size: 3.5rem;
-  color: #fffffb;
-  text-shadow: 2px 1px 3px $dark-grey;
+  p {
+    font-size: 3.5rem;
+    color: #fffffb;
+    text-shadow: 2px 1px 3px $dark-grey;
+  }
+
+  hr {
+    height: 2px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px $dark-grey;
+  }
 }
 
 .warning {
-  color: red;
+  color: orange;
 }
 
 .outer-settings-wrapper {
@@ -142,6 +119,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   width: 100px;
   margin: auto;
 }
@@ -156,26 +134,26 @@ button {
 }
 
 .settings-time {
-  // width: 40px;
   font-size: 1.5rem;
 }
 
 footer {
-  // position relative to bottom of viewport (body)
+  // position relative to bottom of body (viewport)
   position: absolute;
-  bottom: 5%;
+  bottom: 8%;
 
   // for centering horizontally
   left: 0;
   right: 0;
   margin: auto;
 
-  // font-size: 0.8rem;
+  font-size: 1.05rem;
   text-align: center;
 
   a {
-    color: #007af2;
-    font-weight: 600;
+    color: black;
+    font-family: Arial;
+    font-weight: bold;
     text-decoration: none;
     &:hover,
     &:focus {
