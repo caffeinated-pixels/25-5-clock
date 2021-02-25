@@ -7,6 +7,7 @@ import {
   faMinus,
   faPause
 } from '@fortawesome/free-solid-svg-icons'
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
 const initialState = {
   intClock: 1500, // the internal seconds count; default = 1500 secs
@@ -171,6 +172,7 @@ class App extends Component {
           handleIncrement={this.handleIncrement}
           handleDecrement={this.handleDecrement}
         />
+        <Footer />
         <audio
           id="beep"
           src="https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/alarm.mp3"
@@ -282,6 +284,26 @@ const SessionBtns = props => {
         </div>
       </div>
     </div>
+  )
+}
+
+const Footer = () => {
+  return (
+    <footer>
+      <p>
+        Coded by{' '}
+        <a
+          href="https://steviegill-webportfolio.netlify.app/"
+          title="Stevie's web app portofolio page"
+        >
+          Stevie Gill
+        </a>
+        {'; '}
+        <a href="#" title="JS calculator Github repo">
+          <FontAwesomeIcon icon={faGithubSquare} className="githubIcon" /> repo
+        </a>
+      </p>
+    </footer>
   )
 }
 
