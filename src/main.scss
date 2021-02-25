@@ -67,11 +67,12 @@ button {
   &:focus,
   &:hover {
     outline-style: none;
-    border: 2px solid #ff8718;
+    // border: 2px solid #ff8718;
+    color: #ff8718;
   }
   &:active {
     transform: scale(0.93);
-    background-color: #ff8718;
+    // background-color: #ff8718;
   }
 }
 // End of SHARED CLASSES
@@ -85,8 +86,20 @@ button {
   text-align: center;
 }
 
-.start-stop, .reset {
+.timer-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.start-stop,
+.reset {
   font-size: 1.5rem;
+
+}
+
+.icon {
+  filter: drop-shadow(1px 1px 1px $dark-grey)
 }
 
 .timer-label {
@@ -98,18 +111,13 @@ button {
 .time-left {
   width: 160px;
   font-size: 3.5rem;
+  color: #fffffb;
+  text-shadow: 2px 1px 3px $dark-grey;
 }
 
 .warning {
   color: red;
 }
-
-.timer-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 
 .outer-settings-wrapper {
   display: flex;
@@ -136,6 +144,6 @@ button {
 }
 
 .settings-time {
-  width: 40px;
+  // width: 40px;
   font-size: 1.5rem;
 }

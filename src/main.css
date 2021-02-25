@@ -35,12 +35,11 @@ button {
 
 button:focus, button:hover {
   outline-style: none;
-  border: 2px solid #ff8718;
+  color: #ff8718;
 }
 
 button:active {
   transform: scale(0.93);
-  background-color: #ff8718;
 }
 
 .main-wrapper {
@@ -49,8 +48,19 @@ button:active {
   text-align: center;
 }
 
-.start-stop, .reset {
+.timer-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.start-stop,
+.reset {
   font-size: 1.5rem;
+}
+
+.icon {
+  filter: drop-shadow(1px 1px 1px #262525);
 }
 
 .timer-label {
@@ -61,16 +71,12 @@ button:active {
 .time-left {
   width: 160px;
   font-size: 3.5rem;
+  color: #fffffb;
+  text-shadow: 2px 1px 3px #262525;
 }
 
 .warning {
   color: red;
-}
-
-.timer-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .outer-settings-wrapper {
@@ -97,6 +103,5 @@ button:active {
 }
 
 .settings-time {
-  width: 40px;
   font-size: 1.5rem;
 }

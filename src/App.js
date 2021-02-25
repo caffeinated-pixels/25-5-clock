@@ -206,7 +206,7 @@ const Timer = props => {
           onClick={props.handleStartStop}
           aria-label={ariaLabel}
         >
-          <FontAwesomeIcon icon={playPause} />
+          <FontAwesomeIcon icon={playPause} className="icon" />
         </button>
         <div id="time-left" className={timeClass}>
           {props.calcDisplaytime()}
@@ -218,7 +218,7 @@ const Timer = props => {
           onClick={props.handleReset}
           aria-label="Reset timer"
         >
-          <FontAwesomeIcon icon={faRedoAlt} />
+          <FontAwesomeIcon icon={faRedoAlt} className="icon" />
         </button>
       </div>
     </div>
@@ -239,7 +239,7 @@ const SessionBtns = props => {
             onClick={() => props.handleIncrement('breakLength')}
             aria-label="Increment break timer"
           >
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} className="icon" />
           </button>
           <div id="break-length" className="settings-time">
             {props.breakLength}
@@ -250,7 +250,7 @@ const SessionBtns = props => {
             onClick={() => props.handleDecrement('breakLength')}
             aria-label="Decrement break timer"
           >
-            <FontAwesomeIcon icon={faMinus} />
+            <FontAwesomeIcon icon={faMinus} className="icon" />
           </button>
         </div>
       </div>
@@ -266,7 +266,7 @@ const SessionBtns = props => {
             onClick={() => props.handleIncrement('workLength')}
             aria-label="Increment work timer"
           >
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} className="icon" />
           </button>
           <div id="session-length" className="settings-time">
             {props.workLength}
@@ -277,7 +277,7 @@ const SessionBtns = props => {
             onClick={() => props.handleDecrement('workLength')}
             aria-label="Decrement work timer"
           >
-            <FontAwesomeIcon icon={faMinus} />
+            <FontAwesomeIcon icon={faMinus} className="icon" />
           </button>
         </div>
       </div>
