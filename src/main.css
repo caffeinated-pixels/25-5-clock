@@ -74,11 +74,11 @@ button:active {
 
 .time-left {
   width: 160px;
+  color: #fffffb;
 }
 
 .time-left p {
   font-size: 3.5rem;
-  color: #fffffb;
   text-shadow: 2px 1px 3px #262525;
 }
 
