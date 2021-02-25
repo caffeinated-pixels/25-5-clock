@@ -174,7 +174,7 @@ class App extends Component {
           />
           <audio
             id="beep"
-            src="https://raw.githubusercontent.com/caffeinated-pixels/alarmsounds/main/alarm.mp3"
+            src="https://raw.githubusercontent.com/caffeinated-pixels/25-5-clock/main/src/media/alarm.mp3"
             preload="auto"
             ref="alarm"
           />
