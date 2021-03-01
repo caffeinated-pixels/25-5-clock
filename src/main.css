@@ -16,7 +16,7 @@ body {
   font-family: 'Righteous', cursive;
   height: 100vh;
   background-color: lightblue;
-  background-image: url(https://raw.githubusercontent.com/caffeinated-pixels/25-5-clock/main/src/media/tomato-1280.png);
+  background-image: url(./media/tomato-1280.png);
   background-repeat: no-repeat;
   background-position: center;
 }

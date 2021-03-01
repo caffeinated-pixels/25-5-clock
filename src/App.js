@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import alarm from './media/alarm.mp3'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faRedoAlt,
@@ -172,12 +173,7 @@ class App extends Component {
             handleIncrement={this.handleIncrement}
             handleDecrement={this.handleDecrement}
           />
-          <audio
-            id="beep"
-            src="https://raw.githubusercontent.com/caffeinated-pixels/25-5-clock/main/src/media/alarm.mp3"
-            preload="auto"
-            ref="alarm"
-          />
+          <audio id="beep" src={alarm} preload="auto" ref="alarm" />
         </main>
         <Footer />
       </div>
