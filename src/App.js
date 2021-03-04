@@ -151,7 +151,7 @@ class App extends Component {
   // RENDER TIME
   render() {
     return (
-      <div>
+      <>
         <main className="main-wrapper">
           <Header />
           <Timer
@@ -171,7 +171,7 @@ class App extends Component {
           <audio id="beep" src={alarm} preload="auto" ref="alarm" />
         </main>
         <Footer />
-      </div>
+      </>
     )
   }
 }
