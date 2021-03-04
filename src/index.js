@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import './main.scss'
+import './styles/main.scss'
 import '@fontsource/righteous'
 import App from './App'
 

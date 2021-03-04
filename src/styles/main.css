@@ -1,7 +1,3 @@
-// SCSS VARIABLES
-$dark-grey: #262525;
-
-// Start of SHARED CLASSES
 * {
   margin: 0;
   padding: 0;
@@ -16,55 +12,43 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   color: white;
   font-family: 'Righteous', cursive;
-
   height: 100vh;
-
-  background: {
-    color: lightblue;
-    image: url(./media/tomato-1280.png);
-    repeat: no-repeat;
-    position: center;
-  }
+  background-color: lightblue;
+  background-image: url(../media/tomato-1280.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 button {
   width: 50px;
   height: 50px;
-
   display: inline-block;
-
   border: none;
   border-radius: 100%;
   background-color: transparent;
-
   cursor: pointer;
-
   color: black;
   font-family: inherit;
   font-size: 1rem;
   line-height: 1;
   text-decoration: none;
-
-  &:focus,
-  &:hover {
-    outline-style: none;
-    color: #ff8718;
-    color: yellow;
-  }
-  &:active {
-    transform: scale(0.93);
-  }
 }
-// End of SHARED CLASSES
 
-// Start of SPECIFIC CLASSES
+button:focus, button:hover {
+  outline-style: none;
+  color: #ff8718;
+  color: yellow;
+}
+
+button:active {
+  transform: scale(0.93);
+}
+
 .main-wrapper {
   width: 300px;
   padding: 5px;
-
   text-align: center;
 }
 
@@ -80,28 +64,28 @@ button {
 }
 
 .icon {
-  filter: drop-shadow(1px 1px 1px $dark-grey);
+  filter: drop-shadow(1px 1px 1px #262525);
 }
 
 .timer-label {
   font-size: 1.8rem;
-
   margin-top: 25px;
 }
 
 .time-left {
   width: 160px;
   color: #fffffb;
-  p {
-    font-size: 3.5rem;
-    text-shadow: 2px 1px 3px $dark-grey;
-  }
+}
 
-  hr {
-    height: 2px;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px $dark-grey;
-  }
+.time-left p {
+  font-size: 3.5rem;
+  text-shadow: 2px 1px 3px #262525;
+}
+
+.time-left hr {
+  height: 2px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px #262525;
 }
 
 .warning {
@@ -111,7 +95,6 @@ button {
 .outer-settings-wrapper {
   display: flex;
   justify-content: space-between;
-
   margin-top: 25px;
 }
 
@@ -119,7 +102,6 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   width: 100px;
   margin: auto;
 }
@@ -138,26 +120,22 @@ button {
 }
 
 footer {
-  // position relative to bottom of body (viewport)
   position: absolute;
   bottom: 8%;
-
-  // for centering horizontally
   left: 0;
   right: 0;
   margin: auto;
-
   font-size: 1.05rem;
   text-align: center;
+}
 
-  a {
-    color: black;
-    font-family: Arial;
-    font-weight: bold;
-    text-decoration: none;
-    &:hover,
-    &:focus {
-      color: lightyellow;
-    }
-  }
+footer a {
+  color: black;
+  font-family: Arial;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a:hover, footer a:focus {
+  color: lightyellow;
 }
