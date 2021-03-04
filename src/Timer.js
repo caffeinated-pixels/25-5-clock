@@ -10,7 +10,7 @@ const Timer = props => {
   const ariaLabel = props.isTimerRunning ? 'Pause timer' : 'Start timer'
 
   return (
-    <div>
+    <>
       <div id="timer-label" className="timer-label">
         {timerLabel}
       </div>
@@ -36,7 +36,7 @@ const Timer = props => {
           <FontAwesomeIcon icon={faRedoAlt} className="icon" />
         </button>
       </div>
-    </div>
+    </>
   )
 }
 
