@@ -1,0 +1,60 @@
+// main: ./main.scss
+
+$dark-grey: #262525;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-family: 'Righteous', cursive;
+
+  height: 100vh;
+
+  background: {
+    color: lightblue;
+    image: url(../media/tomato-1280.png);
+    repeat: no-repeat;
+    position: center;
+  }
+}
+
+button {
+  width: 50px;
+  height: 50px;
+
+  display: inline-block;
+
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  color: black;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    outline-style: none;
+    color: #ff8718;
+    color: yellow;
+  }
+  &:active {
+    transform: scale(0.93);
+  }
+}

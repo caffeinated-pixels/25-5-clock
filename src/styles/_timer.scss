@@ -1,0 +1,48 @@
+// main: ./main.scss
+
+.main-wrapper {
+  width: 300px;
+  padding: 5px;
+
+  text-align: center;
+}
+
+.timer-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.start-stop,
+.reset {
+  font-size: 1.5rem;
+}
+
+.icon {
+  filter: drop-shadow(1px 1px 1px $dark-grey);
+}
+
+.timer-label {
+  font-size: 1.8rem;
+
+  margin-top: 25px;
+}
+
+.time-left {
+  width: 160px;
+  color: #fffffb;
+  p {
+    font-size: 3.5rem;
+    text-shadow: 2px 1px 3px $dark-grey;
+  }
+
+  hr {
+    height: 2px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px $dark-grey;
+  }
+}
+
+.warning {
+  color: orange;
+}

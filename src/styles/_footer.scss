@@ -1,0 +1,26 @@
+// main: ./main.scss
+
+footer {
+  // position relative to bottom of body (viewport)
+  position: absolute;
+  bottom: 8%;
+
+  // for centering horizontally
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  font-size: 1.05rem;
+  text-align: center;
+
+  a {
+    color: black;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      color: lightyellow;
+    }
+  }
+}

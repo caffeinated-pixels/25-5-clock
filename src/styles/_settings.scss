@@ -1,0 +1,30 @@
+// main: ./main.scss
+
+.outer-settings-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 25px;
+}
+
+.settings-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100px;
+  margin: auto;
+}
+
+.settings-label {
+  font-size: 1.4rem;
+}
+
+.settings-btn {
+  width: 25px;
+  height: 25px;
+}
+
+.settings-time {
+  font-size: 1.5rem;
+}
