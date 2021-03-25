@@ -9,6 +9,14 @@ import alarm from './media/alarm.mp3'
 class App extends Component {
   state = { ...initialState } // initialize state values
 
+  componentDidMount() {
+    document.addEventListener('touchstart', this.unlockAudioForiOS)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('touchstart', this.unlockAudioForiOS)
+  }
+
   // EVENT HANDLERS
   handleStartStop = () => {
     if (!this.state.isTimerRunning) {
@@ -23,7 +31,7 @@ class App extends Component {
   handleReset = () => {
     clearInterval(this.state.intervalId) // stop timer if running
 
-    this.setState({ ...initialState }) // reset all values in state
+    this.setState({ ...initialState, audioUnlocked: true }) // reset all values in state
 
     this.refs.alarm.pause() // stop the alarm sound
     this.refs.alarm.currentTime = 0 // rewind the sound clip
@@ -138,6 +146,14 @@ class App extends Component {
     if (newSecs.length === 1) newSecs = '0' + newSecs
 
     return newMin + ':' + newSecs // retrun in mm:ss format
+  }
+
+  unlockAudioForiOS = () => {
+    if (!this.state.audioUnlocked) {
+      this.refs.alarm.play()
+      this.refs.alarm.pause()
+      this.refs.alarm.currentTime = 0
+    }
   }
 
   // RENDER TIME
